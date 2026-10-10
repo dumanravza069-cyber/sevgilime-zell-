@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sana özel ❤️</title>
+<style>
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(#ffe0ec, #ff9fbe);
+  color: #a00045;
+  overflow: hidden;
+}
+h1 { font-size: 32px; }
+p { padding: 0 25px; font-size: 20px; line-height: 1.6; }
+.heart {
+  font-size: 120px;
+  animation: beat 1s infinite;
+  filter: drop-shadow(0 8px 12px #e84a7a66);
+}
+@keyframes beat {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+.floating {
+  position: fixed;
+  bottom: -40px;
+  animation: rise 6s linear forwards;
+}
+@keyframes rise {
+  to { transform: translateY(-110vh) rotate(30deg); opacity: 0; }
+}
+</style>
+</head>
+<body>
+<h1>Sana özel sevgilim ❤️</h1>
+<p>Senin için kendi ellerimle yaptım bu kalbi çünkü kalbimin en güzel yeri sensin ❤️</p>
+<div class="heart">♥</div>
+<p>Seni çok seviyorum 💗</p>
+<script>
+setInterval(() => {
+  const h = document.createElement("span");
+  h.className = "floating";
+  h.textContent = ["♥","♡","💗","💕"][Math.floor(Math.random()*4)];
+  h.style.left = Math.random()*100 + "vw";
+  h.style.fontSize = (20+Math.random()*20) + "px";
+  document.body.appendChild(h);
+  setTimeout(() => h.remove(), 6000);
+}, 400);
+</script>
+</body>
+</html>
