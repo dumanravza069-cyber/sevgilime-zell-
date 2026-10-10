@@ -1,257 +1,210 @@
 
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sana Özel, Sevgilim ♡</title>
-
+<title>Seni Seviyorum ♡</title>
 <style>
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
   min-height: 100vh;
-  overflow-x: hidden;
-  background:
-    radial-gradient(ellipse at 50% 42%, #754451 0%, #482631 48%, #26171f 100%);
-  color: #f8dce3;
+  overflow: hidden;
+  background: radial-gradient(ellipse at center,
+    #714451 0%, #482832 52%, #24171e 100%);
+  color: #f0c5d2;
   font-family: Georgia, serif;
-  text-align: center;
 }
 
-.page {
-  min-height: 100vh;
-  padding: 35px 18px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+canvas {
+  display: block;
+  width: 100vw;
+  height: 100vh;
 }
 
-h1 {
-  font-weight: normal;
-  font-size: clamp(27px, 6vw, 39px);
-  letter-spacing: 1px;
-  color: #f5d0dc;
-  text-shadow: 0 0 18px #dba1b455;
-}
-
-.subtitle {
-  color: #e5b9c6;
-  font-size: 17px;
-  line-height: 1.8;
-}
-
-.heart-button {
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 12px 0;
-  cursor: pointer;
-  width: min(88vw, 350px);
-  filter: drop-shadow(0 0 12px #e4a8bc33);
-  animation: float 3s ease-in-out infinite;
-}
-
-.heart-button svg {
-  width: 100%;
-  overflow: visible;
-}
-
-.heart-line {
-  fill: none;
-  stroke: #e7aabd;
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  animation: draw 5s ease-in-out infinite alternate;
-}
-
-.heart-line.inner {
-  stroke: #f2cbd7;
-  stroke-width: 1;
-  opacity: .8;
-  animation-delay: .5s;
-}
-
-.heart-fill {
-  fill: #d990a833;
-  animation: breathe 3s ease-in-out infinite;
-}
-
-@keyframes draw {
-  to { stroke-dashoffset: 0; }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-9px); }
-}
-
-@keyframes breathe {
-  0%, 100% { opacity: .3; }
-  50% { opacity: .85; }
-}
-
-button.open, .back {
-  border: 1px solid #dba5b7;
-  color: #fbe5eb;
-  background: #70404f66;
-  border-radius: 30px;
-  padding: 14px 25px;
-  font-family: Georgia, serif;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background .3s, transform .3s;
-}
-
-button.open:hover, .back:hover {
-  background: #985d70;
-  transform: translateY(-2px);
-}
-
-.note {
-  max-width: 480px;
-  line-height: 2;
-  font-size: 18px;
-  color: #f4dce3;
-}
-
-.hidden {
-  display: none !important;
-}
-
-.languages {
-  width: 100%;
-  max-width: 450px;
-  margin: 20px 0;
-  padding: 20px;
-  border: 1px solid #dba5b744;
-  border-radius: 20px;
-  background: #311c2580;
-  line-height: 2.1;
-  color: #f2cfda;
-  font-size: 16px;
-}
-
-.floating {
+#message {
   position: fixed;
-  bottom: -30px;
-  color: #e5a8bb;
-  opacity: 0;
-  pointer-events: none;
-  animation: rise 9s linear infinite;
-}
-
-@keyframes rise {
-  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-  15% { opacity: .65; }
-  85% { opacity: .45; }
-  100% { transform: translateY(-110vh) rotate(35deg); opacity: 0; }
-}
-
-footer {
-  color: #d5a5b3;
+  bottom: 18px;
+  left: 0;
+  width: 100%;
+  text-align: center;
   font-size: 13px;
-  margin-top: 24px;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
+  color: #d9a5b6;
+  opacity: .85;
+  pointer-events: none;
 }
 </style>
 </head>
-
 <body>
 
-<div class="floating" style="left:8%;animation-delay:0s">♡</div>
-<div class="floating" style="left:24%;animation-delay:3s">♥</div>
-<div class="floating" style="left:73%;animation-delay:1s">♡</div>
-<div class="floating" style="left:89%;animation-delay:5s">♥</div>
-<div class="floating" style="left:53%;animation-delay:4s">♡</div>
-
-<main class="page" id="first">
-  <h1>Sana özel, sevgilim ♡</h1>
-  <p class="subtitle">Kalbimin en güzel yeri senin için…</p>
-
-  <button class="heart-button" onclick="openHeart()" aria-label="Kalbimi aç">
-    <svg viewBox="0 0 300 270" role="img" aria-label="Toz pembesi çizgilerden oluşan kalp">
-      <defs>
-        <linearGradient id="pink" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#f3cbd7"/>
-          <stop offset="50%" stop-color="#d997ae"/>
-          <stop offset="100%" stop-color="#f1c4d2"/>
-        </linearGradient>
-      </defs>
-      <path class="heart-fill"
-        d="M150 244 C126 218 24 151 24 83 C24 19 104 13 150 72 C196 13 276 19 276 83 C276 151 174 218 150 244Z"/>
-      <path class="heart-line"
-        stroke="url(#pink)"
-        d="M150 244 C126 218 24 151 24 83 C24 19 104 13 150 72 C196 13 276 19 276 83 C276 151 174 218 150 244Z"/>
-      <path class="heart-line inner"
-        d="M150 219 C127 198 44 143 44 87 C44 40 105 35 150 88 C195 35 256 40 256 87 C256 143 173 198 150 219Z"/>
-      <path d="M150 244 C126 218 24 151 24 83 C24 19 104 13 150 72 C196 13 276 19 276 83 C276 151 174 218 150 244Z"
-        fill="none" stroke="#f4d4df" stroke-width=".6" opacity=".65"/>
-    </svg>
-  </button>
-
-  <p class="subtitle">Senin için hazırladığım küçük bir sürpriz ♡</p>
-  <button class="open" onclick="openHeart()">Kalbimi aç ♡</button>
-  <footer>YALNIZCA SANA, SEVGİLİM</footer>
-</main>
-
-<main class="page hidden" id="second">
-  <h1>Seni seviyorum ♡</h1>
-
-  <p class="note">
-    Senin için kendi ellerimle yaptım bu kalbi
-    çünkü kalbimin en güzel yeri sensin. ♡
-    <br>
-    <br>
-    Dünyanın bütün dillerini öğrensem bile
-    sana olan sevgimi anlatmaya yetmezdi.
-    <br>
-    <br>
-    İyi ki varsın sevgilim. Seni çok seviyorum. ♡
-  </p>
-
-  <div class="languages">
-    Türkçe — Seni seviyorum ♡<br>
-    İngilizce — I love you ♡<br>
-    Fransızca — Je t’aime ♡<br>
-    İtalyanca — Ti amo ♡<br>
-    İspanyolca — Te amo ♡<br>
-    Almanca — Ich liebe dich ♡<br>
-    Portekizce — Eu te amo ♡<br>
-    Japonca — 愛してる ♡<br>
-    Korece — 사랑해 ♡<br>
-    Arapça — أحبك ♡<br>
-    Rusça — Я тебя люблю ♡<br>
-    Yunanca — Σ’ αγαπώ ♡<br>
-    Çince — 我爱你 ♡<br>
-    Farsça — دوستت دارم ♡
-  </div>
-
-  <p class="subtitle">Her dilde, her zaman… yalnızca sen. ♡</p>
-  <button class="back" onclick="goBack()">Kalbime geri dön ♡</button>
-</main>
+<canvas id="heart"></canvas>
+<div id="message">HER DİLDE, HER ZAMAN SENİ SEVİYORUM ♡</div>
 
 <script>
-function openHeart() {
-  document.getElementById("first").classList.add("hidden");
-  document.getElementById("second").classList.remove("hidden");
-  window.scrollTo(0, 0);
+const canvas = document.getElementById("heart");
+const ctx = canvas.getContext("2d");
+
+const pinks = [
+  "#f3d3de",
+  "#e7b3c5",
+  "#d99aaf",
+  "#efc1d0",
+  "#c9859e",
+  "#f5dce4"
+];
+
+const words = [
+  "Seni seviyorum ♡",
+  "I love you ♡",
+  "Je t’aime ♡",
+  "Te amo ♡",
+  "Ti amo ♡",
+  "Ich liebe dich ♡",
+  "Eu te amo ♡",
+  "Я тебя люблю ♡",
+  "愛してる ♡",
+  "사랑해 ♡",
+  "我爱你 ♡",
+  "أحبك ♡",
+  "Σ’ αγαπώ ♡",
+  "دوستت دارم ♡",
+  "Seni çok seviyorum ♡",
+  "Mon amour ♡"
+];
+
+let W, H, dpr, start;
+let points = [];
+
+function resize() {
+  W = window.innerWidth;
+  H = window.innerHeight;
+  dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+  canvas.width = W * dpr;
+  canvas.height = H * dpr;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  const scale = Math.min(W / 36, H / 34, 13);
+  points = [];
+
+  for (let i = 0; i < 180; i++) {
+    const t = (i / 180) * Math.PI * 2;
+    const x = 16 * Math.pow(Math.sin(t), 3);
+    const y = 13 * Math.cos(t)
+      - 5 * Math.cos(2 * t)
+      - 2 * Math.cos(3 * t)
+      - Math.cos(4 * t);
+
+    points.push({
+      x: x * scale,
+      y: -y * scale,
+      color: pinks[i % pinks.length]
+    });
+  }
 }
 
-function goBack() {
-  document.getElementById("second").classList.add("hidden");
-  document.getElementById("first").classList.remove("hidden");
-  window.scrollTo(0, 0);
+function heartPoint(t, scale) {
+  const x = 16 * Math.pow(Math.sin(t), 3);
+  const y = 13 * Math.cos(t)
+    - 5 * Math.cos(2 * t)
+    - 2 * Math.cos(3 * t)
+    - Math.cos(4 * t);
+
+  return { x: x * scale, y: -y * scale };
 }
+
+function draw(time) {
+  ctx.clearRect(0, 0, W, H);
+
+  const cx = W / 2;
+  const cy = H / 2 - 8;
+  const scale = Math.min(W / 36, H / 34, 13);
+  const elapsed = (time - start) / 1000;
+
+  ctx.save();
+  ctx.translate(cx, cy);
+
+  // Kalp yavaşça nefes alır
+  const pulse = 1 + Math.sin(elapsed * 1.7) * 0.018;
+  ctx.scale(pulse, pulse);
+
+  // Kalbin çizgileri sırayla oluşur
+  const progress = Math.min(1, elapsed / 4.5);
+  const count = Math.floor(progress * points.length);
+
+  for (let i = 0; i < count; i++) {
+    const p = points[i];
+    const fade = 0.55 + 0.35 *
+      Math.sin(elapsed * 1.3 + i * 0.13);
+
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(p.x, p.y);
+    ctx.strokeStyle = p.color;
+    ctx.globalAlpha = Math.max(0.25, fade);
+    ctx.lineWidth = 0.65;
+    ctx.stroke();
+  }
+
+  ctx.globalAlpha = 1;
+
+  // Kalbin dış çizgisi
+  ctx.beginPath();
+  for (let i = 0; i <= 240; i++) {
+    const p = heartPoint((i / 240) * Math.PI * 2, scale);
+    if (i === 0) ctx.moveTo(p.x, p.y);
+    else ctx.lineTo(p.x, p.y);
+  }
+  ctx.closePath();
+  ctx.strokeStyle = "#efc6d4";
+  ctx.globalAlpha = 0.8;
+  ctx.lineWidth = 1.15;
+  ctx.stroke();
+
+  // Kalbin içindeki yazı
+  ctx.globalAlpha = 1;
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillStyle = "#f6dce4";
+  ctx.shadowColor = "#e7b3c5";
+  ctx.shadowBlur = 12;
+  ctx.font = "bold 15px Georgia, serif";
+  ctx.fillText("SENİ SEVİYORUM", 0, 8);
+  ctx.shadowBlur = 0;
+
+  ctx.restore();
+
+  // Farklı dillerde sevgi sözleri kalbin çevresinde
+  const radius = Math.min(W * 0.43, H * 0.42);
+  const wordAlpha = 0.72 + Math.sin(elapsed * 1.1) * 0.15;
+
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.font = "12px Georgia, serif";
+  ctx.fillStyle = "#efc5d3";
+  ctx.globalAlpha = wordAlpha;
+
+  words.forEach((word, i) => {
+    const angle = (i / words.length) * Math.PI * 2
+      - Math.PI / 2;
+    const x = cx + Math.cos(angle) * radius;
+    const y = cy + Math.sin(angle) * radius;
+    ctx.fillText(word, x, y);
+  });
+
+  ctx.globalAlpha = 1;
+  requestAnimationFrame(draw);
+}
+
+window.addEventListener("resize", resize);
+resize();
+start = performance.now();
+requestAnimationFrame(draw);
 </script>
-
 </body>
 </html>
 
