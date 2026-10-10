@@ -1,228 +1,257 @@
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sana özel sevgilim ❤️</title>
+<title>Sana Özel, Sevgilim ♡</title>
+
 <style>
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: Georgia, serif;
-  color: #8b174b;
-  text-align: center;
-  background: linear-gradient(135deg, #ffe0ed, #ffc1d9, #fff0f6);
   overflow-x: hidden;
+  background:
+    radial-gradient(ellipse at 50% 42%, #754451 0%, #482631 48%, #26171f 100%);
+  color: #f8dce3;
+  font-family: Georgia, serif;
+  text-align: center;
 }
 
-.screen {
+.page {
   min-height: 100vh;
-  padding: 45px 18px;
+  padding: 35px 18px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
-h1 { font-size: clamp(28px, 7vw, 42px); }
+h1 {
+  font-weight: normal;
+  font-size: clamp(27px, 6vw, 39px);
+  letter-spacing: 1px;
+  color: #f5d0dc;
+  text-shadow: 0 0 18px #dba1b455;
+}
 
-.message {
-  max-width: 550px;
-  font-size: 20px;
+.subtitle {
+  color: #e5b9c6;
+  font-size: 17px;
   line-height: 1.8;
 }
 
-.heart {
-  font-size: 110px;
-  animation: beat 1s infinite;
-  filter: drop-shadow(0 8px 16px #e94c87);
-}
-
-@keyframes beat {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.18); }
-}
-
-button {
+.heart-button {
+  background: none;
   border: none;
-  border-radius: 30px;
-  padding: 16px 24px;
-  margin-top: 25px;
-  background: #e84383;
-  color: white;
-  font-size: 17px;
+  padding: 0;
+  margin: 12px 0;
   cursor: pointer;
-  box-shadow: 0 5px 15px #d65b8b66;
+  width: min(88vw, 350px);
+  filter: drop-shadow(0 0 12px #e4a8bc33);
+  animation: float 3s ease-in-out infinite;
 }
 
-button:active { transform: scale(.97); }
+.heart-button svg {
+  width: 100%;
+  overflow: visible;
+}
 
-#second { display: none; }
+.heart-line {
+  fill: none;
+  stroke: #e7aabd;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw 5s ease-in-out infinite alternate;
+}
+
+.heart-line.inner {
+  stroke: #f2cbd7;
+  stroke-width: 1;
+  opacity: .8;
+  animation-delay: .5s;
+}
+
+.heart-fill {
+  fill: #d990a833;
+  animation: breathe 3s ease-in-out infinite;
+}
+
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: .3; }
+  50% { opacity: .85; }
+}
+
+button.open, .back {
+  border: 1px solid #dba5b7;
+  color: #fbe5eb;
+  background: #70404f66;
+  border-radius: 30px;
+  padding: 14px 25px;
+  font-family: Georgia, serif;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background .3s, transform .3s;
+}
+
+button.open:hover, .back:hover {
+  background: #985d70;
+  transform: translateY(-2px);
+}
+
+.note {
+  max-width: 480px;
+  line-height: 2;
+  font-size: 18px;
+  color: #f4dce3;
+}
+
+.hidden {
+  display: none !important;
+}
 
 .languages {
   width: 100%;
-  max-width: 650px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
-  gap: 12px;
-  margin-top: 20px;
-}
-
-.language {
-  background: #ffffffa8;
-  padding: 15px 8px;
-  border-radius: 16px;
-  box-shadow: 0 3px 12px #d75d8a22;
-  font-size: 17px;
-}
-
-.language small {
-  display: block;
-  color: #b13d70;
-  margin-bottom: 7px;
-  font-family: Arial, sans-serif;
+  max-width: 450px;
+  margin: 20px 0;
+  padding: 20px;
+  border: 1px solid #dba5b744;
+  border-radius: 20px;
+  background: #311c2580;
+  line-height: 2.1;
+  color: #f2cfda;
+  font-size: 16px;
 }
 
 .floating {
   position: fixed;
   bottom: -30px;
-  animation: floatUp 7s linear infinite;
+  color: #e5a8bb;
+  opacity: 0;
   pointer-events: none;
-  z-index: -1;
+  animation: rise 9s linear infinite;
 }
 
-@keyframes floatUp {
-  to { transform: translateY(-115vh) rotate(25deg); opacity: 0; }
+@keyframes rise {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  15% { opacity: .65; }
+  85% { opacity: .45; }
+  100% { transform: translateY(-110vh) rotate(35deg); opacity: 0; }
+}
+
+footer {
+  color: #d5a5b3;
+  font-size: 13px;
+  margin-top: 24px;
+  letter-spacing: 1px;
 }
 </style>
 </head>
+
 <body>
 
-<section id="first" class="screen">
-  <h1>Sana özel sevgilim ❤️</h1>
+<div class="floating" style="left:8%;animation-delay:0s">♡</div>
+<div class="floating" style="left:24%;animation-delay:3s">♥</div>
+<div class="floating" style="left:73%;animation-delay:1s">♡</div>
+<div class="floating" style="left:89%;animation-delay:5s">♥</div>
+<div class="floating" style="left:53%;animation-delay:4s">♡</div>
 
-  <p class="message">
-    Senin için kendi ellerimle yaptım bu kalbi
-    çünkü kalbimin en güzel yeri sensin ❤️
-  </p>
+<main class="page" id="first">
+  <h1>Sana özel, sevgilim ♡</h1>
+  <p class="subtitle">Kalbimin en güzel yeri senin için…</p>
 
-  <div class="heart">♥</div>
-
-  <h2>Seni çok seviyorum 💗</h2>
-
-  <button onclick="showLanguages()">
-    Dünyadaki bütün dillerde seni seviyorum 🌍❤️
+  <button class="heart-button" onclick="openHeart()" aria-label="Kalbimi aç">
+    <svg viewBox="0 0 300 270" role="img" aria-label="Toz pembesi çizgilerden oluşan kalp">
+      <defs>
+        <linearGradient id="pink" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#f3cbd7"/>
+          <stop offset="50%" stop-color="#d997ae"/>
+          <stop offset="100%" stop-color="#f1c4d2"/>
+        </linearGradient>
+      </defs>
+      <path class="heart-fill"
+        d="M150 244 C126 218 24 151 24 83 C24 19 104 13 150 72 C196 13 276 19 276 83 C276 151 174 218 150 244Z"/>
+      <path class="heart-line"
+        stroke="url(#pink)"
+        d="M150 244 C126 218 24 151 24 83 C24 19 104 13 150 72 C196 13 276 19 276 83 C276 151 174 218 150 244Z"/>
+      <path class="heart-line inner"
+        d="M150 219 C127 198 44 143 44 87 C44 40 105 35 150 88 C195 35 256 40 256 87 C256 143 173 198 150 219Z"/>
+      <path d="M150 244 C126 218 24 151 24 83 C24 19 104 13 150 72 C196 13 276 19 276 83 C276 151 174 218 150 244Z"
+        fill="none" stroke="#f4d4df" stroke-width=".6" opacity=".65"/>
+    </svg>
   </button>
-</section>
 
-<section id="second" class="screen">
-  <h1>Seni her dilde seviyorum ❤️🌍</h1>
-  <p class="message">
-    Dünyada kaç dil varsa, kalbimde sana olan sevgim hepsinden büyük 💗
+  <p class="subtitle">Senin için hazırladığım küçük bir sürpriz ♡</p>
+  <button class="open" onclick="openHeart()">Kalbimi aç ♡</button>
+  <footer>YALNIZCA SANA, SEVGİLİM</footer>
+</main>
+
+<main class="page hidden" id="second">
+  <h1>Seni seviyorum ♡</h1>
+
+  <p class="note">
+    Senin için kendi ellerimle yaptım bu kalbi
+    çünkü kalbimin en güzel yeri sensin. ♡
+    <br>
+    <br>
+    Dünyanın bütün dillerini öğrensem bile
+    sana olan sevgimi anlatmaya yetmezdi.
+    <br>
+    <br>
+    İyi ki varsın sevgilim. Seni çok seviyorum. ♡
   </p>
 
-  <div class="languages" id="languages"></div>
+  <div class="languages">
+    Türkçe — Seni seviyorum ♡<br>
+    İngilizce — I love you ♡<br>
+    Fransızca — Je t’aime ♡<br>
+    İtalyanca — Ti amo ♡<br>
+    İspanyolca — Te amo ♡<br>
+    Almanca — Ich liebe dich ♡<br>
+    Portekizce — Eu te amo ♡<br>
+    Japonca — 愛してる ♡<br>
+    Korece — 사랑해 ♡<br>
+    Arapça — أحبك ♡<br>
+    Rusça — Я тебя люблю ♡<br>
+    Yunanca — Σ’ αγαπώ ♡<br>
+    Çince — 我爱你 ♡<br>
+    Farsça — دوستت دارم ♡
+  </div>
 
-  <p class="message">Benim en güzel kelimem sensin ❤️</p>
-
-  <button onclick="showFirst()">Kalbime geri dön ❤️</button>
-</section>
+  <p class="subtitle">Her dilde, her zaman… yalnızca sen. ♡</p>
+  <button class="back" onclick="goBack()">Kalbime geri dön ♡</button>
+</main>
 
 <script>
-const words = [
-  ["Türkçe", "Seni seviyorum ❤️"],
-  ["İngilizce", "I love you ❤️"],
-  ["Almanca", "Ich liebe dich ❤️"],
-  ["Fransızca", "Je t’aime ❤️"],
-  ["İspanyolca", "Te amo ❤️"],
-  ["İtalyanca", "Ti amo ❤️"],
-  ["Portekizce", "Eu te amo ❤️"],
-  ["Hollandaca", "Ik hou van jou ❤️"],
-  ["İsveççe", "Jag älskar dig ❤️"],
-  ["Norveççe", "Jeg elsker deg ❤️"],
-  ["Danca", "Jeg elsker dig ❤️"],
-  ["Fince", "Rakastan sinua ❤️"],
-  ["Lehçe", "Kocham cię ❤️"],
-  ["Çekçe", "Miluji tě ❤️"],
-  ["Romence", "Te iubesc ❤️"],
-  ["Yunanca", "Σ' αγαπώ ❤️"],
-  ["Rusça", "Я тебя люблю ❤️"],
-  ["Ukraynaca", "Я тебе кохаю ❤️"],
-  ["Arapça", "أحبك ❤️"],
-  ["Farsça", "دوستت دارم ❤️"],
-  ["Japonca", "愛してる ❤️"],
-  ["Korece", "사랑해 ❤️"],
-  ["Çince", "我爱你 ❤️"],
-  ["Hintçe", "मैं तुमसे प्यार करता हूँ ❤️"],
-  ["Bengalce", "আমি তোমাকে ভালোবাসি ❤️"],
-  ["Urduca", "میں تم سے پیار کرتا ہوں ❤️"],
-  ["Tayca", "ฉันรักคุณ ❤️"],
-  ["Vietnamca", "Anh yêu em ❤️"],
-  ["Endonezce", "Aku cinta kamu ❤️"],
-  ["Filipince", "Mahal kita ❤️"],
-  ["İbranice", "אני אוהב אותך ❤️"],
-  ["Svahili", "Nakupenda ❤️"],
-  ["Ermenice", "Ես քեզ սիրում եմ ❤️"],
-  ["Gürcüce", "მიყვარხარ ❤️"],
-  ["Azerbaycanca", "Mən səni sevirəm ❤️"],
-  ["Kürtçe (Kurmancî)", "Ez ji te hez dikim ❤️"],
-  ["Latince", "Te amo ❤️"],
-  ["Esperanto", "Mi amas vin ❤️"],
-  ["İzlandaca", "Ég elska þig ❤️"],
-  ["Macarca", "Szeretlek ❤️"],
-  ["Hırvatça", "Volim te ❤️"],
-  ["Sırpça", "Волим те ❤️"],
-  ["Bulgarca", "Обичам те ❤️"],
-  ["Slovakça", "Ľúbim ťa ❤️"],
-  ["Litvanca", "Aš tave myliu ❤️"],
-  ["Letonca", "Es tevi mīlu ❤️"],
-  ["Estonca", "Ma armastan sind ❤️"],
-  ["Malta dili", "Inħobbok ❤️"],
-  ["İrlandaca", "Tá grá agam duit ❤️"],
-  ["Galce", "Rwy'n dy garu di ❤️"],
-  ["Nepalce", "म तिमीलाई माया गर्छु ❤️"]
-];
-
-const container = document.getElementById("languages");
-
-words.forEach(([language, phrase]) => {
-  const card = document.createElement("div");
-  card.className = "language";
-
-  const name = document.createElement("small");
-  name.textContent = language;
-
-  const text = document.createElement("div");
-  text.textContent = phrase;
-
-  card.append(name, text);
-  container.appendChild(card);
-});
-
-function showLanguages() {
-  document.getElementById("first").style.display = "none";
-  document.getElementById("second").style.display = "flex";
+function openHeart() {
+  document.getElementById("first").classList.add("hidden");
+  document.getElementById("second").classList.remove("hidden");
   window.scrollTo(0, 0);
 }
 
-function showFirst() {
-  document.getElementById("second").style.display = "none";
-  document.getElementById("first").style.display = "flex";
+function goBack() {
+  document.getElementById("second").classList.add("hidden");
+  document.getElementById("first").classList.remove("hidden");
   window.scrollTo(0, 0);
-}
-
-for (let i = 0; i < 16; i++) {
-  const heart = document.createElement("div");
-  heart.className = "floating";
-  heart.textContent = ["💗", "💕", "💖", "❤️"][i % 4];
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.animationDelay = Math.random() * 7 + "s";
-  heart.style.fontSize = (15 + Math.random() * 20) + "px";
-  document.body.appendChild(heart);
 }
 </script>
 
 </body>
 </html>
+
